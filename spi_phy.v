@@ -11,6 +11,7 @@ module spi_phy(
   
   output        o_pready,
   output [15:0] o_prdata,
+  output        o_pslverr,
   
   
   // spi interface
