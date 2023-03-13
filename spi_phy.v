@@ -1,4 +1,4 @@
-module spi_phy(
+module apb_spi_phy(
   input  i_clk,
   input  i_rst_n,
   
