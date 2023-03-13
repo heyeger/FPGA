@@ -2,7 +2,7 @@ module spi_phy(
   input  i_clk,
   input  i_rst_n,
   
-  // apb interface
+  // apb slave interface
   input [15:0]  i_paddr,
   input         i_pwrite,
   input         i_psel,
