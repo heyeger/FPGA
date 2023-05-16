@@ -2,7 +2,7 @@
 `define __AHB_MST_DRV
 
 
-class ahb_mst_drv extends uvm_component;
+class ahb_mst_drv extends uvm_driver#(ahb_mst_trans);
     `uvm_component_utils(ahb_mst_drv);
     
     virtual ahb_mst_if vif;
