@@ -8,9 +8,21 @@
 #include <xparameters_ps.h>
 #include "scu_gic.h"
 
+#define PS_TIMER1_BASEADDR_OFFSET 4
+#define PS_TIMER2_BASEADDR_OFFSET 8
+
+#define PS_TTC0_TIMER0_BASEADDR XPS_TTC0_BASEADDR
+#define PS_TTC0_TIMER1_BASEADDR XPS_TTC0_BASEADDR+PS_TIMER1_BASEADDR_OFFSET
+#define PS_TTC0_TIMER2_BASEADDR XPS_TTC0_BASEADDR+PS_TIMER2_BASEADDR_OFFSET
+
+#define PS_TTC1_TIMER0_BASEADDR XPS_TTC0_BASEADDR
+#define PS_TTC1_TIMER1_BASEADDR XPS_TTC0_BASEADDR+PS_TIMER1_BASEADDR_OFFSET
+#define PS_TTC1_TIMER2_BASEADDR XPS_TTC0_BASEADDR+PS_TIMER2_BASEADDR_OFFSET
+
+
 void ttc_init(XTtcPs ttc_inst,u32 ttc_baseaddr ,u16 Intr_ID,u32 interval_time_us,Xil_InterruptHandler handle);
 
-extern XTtcPs ttc_inst0;
+extern XTtcPs ttc_inst0,ttc_inst1;
 
 
 #endif

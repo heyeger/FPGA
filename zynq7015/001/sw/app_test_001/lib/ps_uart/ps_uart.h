@@ -9,9 +9,17 @@
 #include <xparameters_ps.h>
 
 #include "scu_gic.h"
+#include "ps_ttc.h"
+#include "isr_handler.h"
 
 #define PS_UART_BAUDRATE 115200
 
+
+extern XUartPs psuart_inst;
+
+
+void ps_uart_init(Xil_InterruptHandler Handler);
+void uart_tx();
 
 //#define func(x,...) do{ \
 //                   	sprintf(x,##__VA_ARGS__);

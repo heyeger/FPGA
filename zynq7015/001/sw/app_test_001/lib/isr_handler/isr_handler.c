@@ -1,5 +1,5 @@
 
-#include "irq_handler.h"
+#include "isr_handler.h"
 //#include "axi_gpio.h"
 
 volatile u8 inter_flag;
@@ -14,7 +14,7 @@ void axi_gpio_irq_handler()
 		//u8 axi_led_status = XGpio_DiscreteRead(&axi_gpio_pl,1);
     	//XGpio_DiscreteWrite(&axi_gpio_pl, 1, 0x3&(~axi_led_status));
 		inter_flag = PL_GPIO_INTR_FLAG;
-		XTtcPs_Start(&ttc_inst);
+		XTtcPs_Start(&ttc_inst0);
 		XGpio_InterruptClear(&axi_gpio_pl, pl_key_channel);//clear channel01 interrupt.
 
 	}
@@ -31,17 +31,17 @@ void ps_gpio_irq_handler()
 		//u8 ps_led_status = XGpioPs_ReadPin(&ps_gpio, ps_key);
 		//XGpioPs_WritePin(&ps_gpio, ps_led, ~ps_led_status );
 		inter_flag = PS_GPIO_INTR_FLAG;
-		XTtcPs_Start(&ttc_inst);
+		XTtcPs_Start(&ttc_inst0);
 		XGpioPs_IntrClearPin(&ps_gpio, ps_key);
 
 	}
 }
 
 
-void ttc_irq_handler()
+void ttc0_timer0_irq_handler()
 {
-	XTtcPs_Stop(&ttc_inst);
-	XTtcPs_ResetCounterValue(&ttc_inst);
+	XTtcPs_Stop(&ttc_inst0);
+	XTtcPs_ResetCounterValue(&ttc_inst0);
 	if(inter_flag == PL_GPIO_INTR_FLAG)
 	{	
 		u8 axi_led_status = XGpio_DiscreteRead(&axi_gpio_pl,1);
@@ -54,6 +54,11 @@ void ttc_irq_handler()
 	}
 	inter_flag = CLEARIO_INTR_FLAG;
 
-	u32 ttc_intr_sts = XTtcPs_GetInterruptStatus(&ttc_inst);
-	XTtcPs_ClearInterruptStatus(&ttc_inst,ttc_intr_sts);
+	u32 ttc_intr_sts = XTtcPs_GetInterruptStatus(&ttc_inst0);
+	XTtcPs_ClearInterruptStatus(&ttc_inst0,ttc_intr_sts);
+}
+
+void ttc0_timer1_irq_handler()
+{
+	uart_tx();
 }
