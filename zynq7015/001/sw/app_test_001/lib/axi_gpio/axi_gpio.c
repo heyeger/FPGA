@@ -1,6 +1,6 @@
 
 #include "axi_gpio.h"
-#include "scu_gic.h"
+//#include "scu_gic.h"
 //#include <xgpio.h>
 //#include <xgpio_l.h>
 //#include <xil_printf.h>

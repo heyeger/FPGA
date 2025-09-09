@@ -4,7 +4,7 @@
 #ifndef PS_UART_H_
 #define PS_UART_H_
 
-
+#include <stdio.h>
 #include <xuartps.h>
 #include <xparameters_ps.h>
 
@@ -14,12 +14,16 @@
 
 #define PS_UART_BAUDRATE 115200
 
+#define log_upload(x, ...) do{ \
+                            sprintf(tx_buffer,x,##__VA_ARGS__);\
+                            }while(0)
 
 extern XUartPs psuart_inst;
-
+//extern volatile char *tx_buffer;
 
 void ps_uart_init(Xil_InterruptHandler Handler);
 void uart_tx();
+
 
 //#define func(x,...) do{ \
 //                   	sprintf(x,##__VA_ARGS__);

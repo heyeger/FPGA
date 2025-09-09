@@ -20,9 +20,9 @@
 #define PS_TTC1_TIMER2_BASEADDR XPS_TTC0_BASEADDR+PS_TIMER2_BASEADDR_OFFSET
 
 
-void ttc_init(XTtcPs ttc_inst,u32 ttc_baseaddr ,u16 Intr_ID,u32 interval_time_us,Xil_InterruptHandler handle);
+void ttc_init(XTtcPs *ttc_inst_ptr,u32 ttc_baseaddr ,u16 Intr_ID,u32 interval_time_us,Xil_InterruptHandler handle);
 
-extern XTtcPs ttc_inst0,ttc_inst1;
+extern XTtcPs ttc0_timer0_inst,ttc0_timer1_inst;
 
 
 #endif
