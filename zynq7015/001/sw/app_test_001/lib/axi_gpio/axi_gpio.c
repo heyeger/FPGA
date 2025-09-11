@@ -1,6 +1,7 @@
 
 #include "axi_gpio.h"
 //#include "scu_gic.h"
+//#include "scu_gic.h"
 //#include <xgpio.h>
 //#include <xgpio_l.h>
 //#include <xil_printf.h>
@@ -25,7 +26,7 @@ void axi_gpio_intc_init(Xil_InterruptHandler Handler)
 {
     set_scugic_link(SPI_INTERRUPT_BASE_IRQID+XPAR_FABRIC_AXI_GPIO_0_INTR, // warning: IRQ_ID = SPI_BASE_ID + XPAR_FABRIC_...
                     0xA0,
-                    High_Level_Sensitive, 
+                    Rising_Edge_Sensitive, 
                     Handler, 
                     (void *)(&axi_gpio_pl));
     

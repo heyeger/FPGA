@@ -23,5 +23,6 @@ void ps_gpio_irq_handler();
 void ttc0_timer0_irq_handler();
 void ttc0_timer1_irq_handler();
 void uart_log_irq_handler();
+void scu_timer_handle();
 
 #endif

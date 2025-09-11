@@ -11,13 +11,13 @@
 #define ps_key 47
 #define ps_led 7
 
-void ps_gpio_int();
-void set_ps_led(u8 led);
-u8 get_ps_key_status();
+void ps_gpio_init();
+//void set_ps_led(u8 led);
+//u8 get_ps_key_status();
 
 extern XGpioPs ps_gpio;
 
-void ps_gpio_intc_init(XGpioPs_Handler Handler);
-
+void ps_gpio_intc_init(Xil_InterruptHandler Handler);
+u32 User_Define_GpioPs_ReadPin(XGpioPs *InstancePtr,u8 Pin);
 
 #endif
